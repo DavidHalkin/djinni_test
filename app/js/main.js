@@ -161,23 +161,23 @@ document.addEventListener('DOMContentLoaded', () => {
 	const switchers = document.querySelectorAll('.btn_toggler input[type=radio]');
 
 
-	function goDark(params) {
+	function setDarkMode() {
 		document.querySelectorAll('.text-light').forEach((styles) => {
 			styles.classList.replace('text-light', 'text-dark');
 		});
 	}
 
-	function goLight(params) {
+	function setLightMode() {
 		document.querySelectorAll('.text-dark').forEach((styles) => {
 			styles.classList.replace('text-dark', 'text-light');
 		});
 	}
 	if (document.body.closest('.dark-mode')) {
 		switchers[1].checked = true;
-		goLight();
+		setLightMode();
 	} else {
 		switchers[0].checked = true;
-		goDark();
+		setDarkMode();
 	}
 
 	switchers.forEach(element => {
@@ -185,13 +185,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
 			if (e.target.getAttribute('id') == 'day') {
 				document.body.classList.remove('dark-mode');
-				goDark();
+				setDarkMode();
 			} else {
 				document.body.classList.add('dark-mode');
-				goLight();
+				setLightMode();
 			}
 		});
 	});
 
 
+
+	//cards render
+	async function logJSONData() {
+		const response = await fetch('https://picsum.photos/v2/list?page=1&limit=9');
+		const jsonData = await response.json();
+		jsonData.forEach(cardOne => {
+			console.log(cardOne);
+		});
+	}
+	logJSONData();
 });
