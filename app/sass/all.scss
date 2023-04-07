@@ -176,4 +176,8 @@
 			}
 		}
 	}
+
+	.btn-outline-light {
+		@include button-variant(theme-color('dark'), theme-color('light'));
+	}
 }

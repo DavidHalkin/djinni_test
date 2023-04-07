@@ -197,4 +197,16 @@ svg[class^="icon-"] path, svg[class*=" icon-"] path { fill: currentColor !import
 
 .dark-mode .dropdown-menu a:hover { background: #404040; }
 
+.dark-mode .btn-outline-light { color: #fff; background-color: #292929; border-color: #EBEBEB; }
+
+.dark-mode .btn-outline-light:hover { color: #fff; background-color: #161616; border-color: #d2d2d2; }
+
+.dark-mode .btn-outline-light:focus, .dark-mode .btn-outline-light.focus { color: #fff; background-color: #161616; border-color: #d2d2d2; -webkit-box-shadow: 0 0 0 0.2rem rgba(238, 238, 238, 0.5); box-shadow: 0 0 0 0.2rem rgba(238, 238, 238, 0.5); }
+
+.dark-mode .btn-outline-light.disabled, .dark-mode .btn-outline-light:disabled { color: #fff; background-color: #292929; border-color: #EBEBEB; }
+
+.dark-mode .btn-outline-light:not(:disabled):not(.disabled):active, .dark-mode .btn-outline-light:not(:disabled):not(.disabled).active, .show > .dark-mode .btn-outline-light.dropdown-toggle { color: #fff; background-color: #101010; border-color: #cbcbcb; }
+
+.dark-mode .btn-outline-light:not(:disabled):not(.disabled):active:focus, .dark-mode .btn-outline-light:not(:disabled):not(.disabled).active:focus, .show > .dark-mode .btn-outline-light.dropdown-toggle:focus { -webkit-box-shadow: 0 0 0 0.2rem rgba(238, 238, 238, 0.5); box-shadow: 0 0 0 0.2rem rgba(238, 238, 238, 0.5); }
+
 /*# sourceMappingURL=all.css.map */
