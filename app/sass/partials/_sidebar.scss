@@ -1,0 +1,61 @@
+.sidebar {
+	--size: 273px;
+	max-width: var(--size);
+	flex: 0 0 var(--size);
+	// margin-right: 119px;
+	position: sticky;
+	top: 80px;
+	left: 0;
+	background: #fff;
+	z-index: 10;
+	// margin-right: 10px;
+	margin-top: 10px;
+
+	@include media-breakpoint-down(sm) {
+		--size: 100%;
+		top: 73px;
+
+		margin-top: 30px;
+		border-bottom: 1px solid theme-color('warning');
+	}
+}
+
+.nav_list {
+	overflow: auto;
+
+	li {
+		@include media-breakpoint-down(sm) {
+			margin-left: 16px;
+		}
+
+		&.active {
+			a {
+				@include button-variant(theme-color('warning'), theme-color('warning'));
+			}
+		}
+
+		a {
+			padding-left: $spacer;
+			padding-right: $spacer;
+			font-weight: bold;
+			padding-left: 14px;
+			padding-right: 14px;
+
+			svg {
+				--size_ico: 20px;
+				font-size: var(--size_ico);
+				margin-right: 9px;
+				flex: 0 0 var(--size_ico);
+				max-width: var(--size_ico);
+			}
+
+			@include media-breakpoint-down(sm) {
+				white-space: nowrap;
+			}
+
+			&:hover {
+				@include button-variant(theme-color('warning'), theme-color('warning'));
+			}
+		}
+	}
+}

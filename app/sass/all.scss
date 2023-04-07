@@ -1,0 +1,179 @@
+@import '_custom_bootstrap_vatiables.scss',
+'../../bower_components/bootstrap/scss/_functions.scss',
+'../../bower_components/bootstrap/scss/_variables.scss',
+'../../bower_components/bootstrap/scss/_mixins.scss',
+'_mixin',
+'_param',
+'partials/ui/_webfont',
+
+'partials/ui/_checkbox',
+'partials/ui/_dropDown',
+'partials/_sidebar',
+'partials/_header';
+
+.main {
+	padding-top: 45px;
+
+	@include media-breakpoint-down(sm) {
+		padding-top: 0;
+
+	}
+
+}
+
+.rezult_search {
+	font-size: 14px;
+	padding-top: 10px;
+}
+
+.custom_width {
+	--width: 65.2%;
+	max-width: var(--width);
+	flex: 0 0 var(--width);
+
+	@include media-breakpoint-down(sm) {
+		--width: 100%;
+
+		.header & {
+			flex: 0 0 auto;
+			width: auto;
+			max-width: 100%;
+		}
+	}
+
+
+}
+
+.title_page {
+
+	h1 {
+		font-size: 40px;
+		color: theme-color('danger');
+
+		@include media-breakpoint-down(sm) {
+			font-size: 30px;
+		}
+	}
+}
+
+.list_items {
+	padding-top: 32px;
+	row-gap: 24px;
+	--gutter: 12px;
+
+	&.row {
+		margin-left: calc(var(--gutter) * -1);
+		margin-right: calc(var(--gutter) * -1);
+	}
+
+	>[class *="col-"] {
+		padding-left: var(--gutter);
+		padding-right: var(--gutter);
+	}
+
+	.card {
+		height: 100%;
+	}
+}
+
+.card {
+	.card-title {
+		font-size: 24px;
+		margin-bottom: 8px;
+		@include text-truncate();
+	}
+
+	.card-body {
+		padding: 19px 24px;
+
+		p {
+			margin-bottom: 8px;
+
+			&:not(.opened) {
+				overflow: hidden;
+				text-overflow: ellipsis;
+				display: -webkit-box;
+				-webkit-line-clamp: 2;
+				-webkit-box-orient: vertical;
+			}
+		}
+
+		a {
+			font-weight: 500;
+		}
+	}
+
+	.card-footer {
+		padding-top: 11px;
+		padding-bottom: 11px;
+
+		[class *="col-"] {
+			margin-top: 5px;
+			margin-bottom: 5px;
+		}
+
+		.btn {
+			@include media-breakpoint-down(md) {
+				font-size: 14px;
+			}
+
+			@include media-breakpoint-down(sm) {
+				display: block;
+				width: 100%;
+			}
+		}
+	}
+
+	.img_holder {
+		height: 200px;
+		overflow: hidden;
+
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+
+		}
+	}
+}
+
+.dark-mode {
+	background: #000;
+	color: #fff;
+
+	.header {
+		background: #000;
+	}
+
+	.bg-gray-100 {
+		background: #000;
+	}
+
+	.sidebar {
+		background: #000;
+	}
+
+	.header_content {
+		background: #000;
+	}
+
+	.card {
+		background: lighten(#000, 10%);
+
+		.card-title {
+			color: lighten(#000, 20%);
+		}
+	}
+
+	.dropdown-menu {
+		background: lighten(#000, 20%);
+
+		a {
+			color: #fff;
+
+			&:hover {
+				background: lighten(#000, 25%);
+			}
+		}
+	}
+}

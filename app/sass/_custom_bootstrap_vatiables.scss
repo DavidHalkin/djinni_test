@@ -1,0 +1,40 @@
+$gray-100: #eee;
+$body-color: #666;
+$theme-colors: (
+	"warning": #ED7135,
+	"dark": #292929,
+	"light": #EBEBEB,
+	"secondary": $body-color,
+);
+
+$grid-breakpoints: (
+	xs: 0,
+	sm: 576px,
+	md: 992px,
+	lg: 1160px,
+	xl: 1450px
+);
+$border-radius-lg: 100px;
+
+//card
+$card-border-radius: 8px;
+$card-border-color: #EBEBEB;
+
+$input-border-radius: 100px;
+$input-border-color: #fff;
+$input-focus-box-shadow: 0;
+$form-feedback-icon-invalid: none;
+
+
+$btn-box-shadow: none;
+$btn-focus-box-shadow: none !important;
+$btn-border-width: 2px;
+$btn-border-radius: 8px;
+
+
+
+$input-placeholder-color: $body-color;
+$input-focus-border-color: #fff;
+$input-height: 40px;
+$input-border-width: 0;
+$input-color: $body-color;

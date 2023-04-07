@@ -1,0 +1,175 @@
+%nav_decor {
+	&:after {
+		content: '';
+		width: 100%;
+		height: 2px;
+		position: absolute;
+		bottom: -1px;
+		left: 0;
+		background: theme-color('warning');
+	}
+}
+
+.header {
+	position: sticky;
+	top: 0;
+	left: 0;
+	background: #fff;
+	z-index: 30;
+
+	>.centered {
+		height: 72px;
+	}
+
+	.btn_lang {
+		width: 110px;
+
+		span {
+			width: 100%;
+			display: block;
+		}
+	}
+
+	.header_nav {
+		--w: 41.5%;
+		max-width: var(--w);
+		flex: 0 0 var(--w);
+
+		@include media-breakpoint-down(sm) {
+			max-width: none;
+			flex: 0 0 auto;
+		}
+
+		li {
+			margin-right: 24px;
+
+			&.active {
+				a {
+					@extend %nav_decor;
+					font-weight: bold;
+				}
+			}
+
+			a {
+				font-size: 16px;
+				color: theme-color('secondary');
+				position: relative;
+				display: flex;
+				align-items: center;
+				height: 100%;
+
+				&:hover {
+					color: theme-color('dark');
+					text-decoration: none;
+					@extend %nav_decor;
+				}
+			}
+		}
+	}
+
+	.icon-search {
+		font-size: 24px;
+	}
+}
+
+.custom_dropdown {
+	.btn {
+		&.dropdown-toggle {
+			&:after {
+				content: none;
+			}
+
+			svg {
+				font-size: 28px;
+			}
+		}
+	}
+
+	.dropdown-menu {
+		max-width: 200px;
+
+		.dropdown-item {
+			@include text-truncate();
+			text-align: right;
+		}
+	}
+}
+
+.header_content {
+	@include media-breakpoint-down(sm) {
+		&.opened {
+			display: flex !important;
+		}
+
+		transition: all 0.3s ease;
+		position: fixed;
+		display: none !important;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		right: 0;
+		background: #fff;
+		z-index: 20;
+		flex-direction: column;
+		justify-content: center;
+		padding: 16px 70px 16px 16px !important;
+		overflow: auto;
+		border: 10px solid theme-color('warning');
+
+		.header_nav {
+			display: block !important;
+			padding-bottom: 15px;
+
+			li {
+				border-bottom: 1px solid theme-color('warning');
+				margin: 0;
+
+				a {
+					padding: 20px;
+
+					&:after {
+						content: none !important;
+					}
+				}
+
+				&.active {
+					a {
+						background: rgba(theme-color('warning'), .9);
+						color: #fff;
+					}
+				}
+			}
+		}
+
+		.form-control {
+			height: 60px;
+			font-size: 18px;
+		}
+
+		.etc_part {
+			flex: 0 0 auto;
+		}
+	}
+}
+
+.btn_mob_menu {
+	cursor: pointer;
+
+	svg {
+		font-size: 20px;
+	}
+}
+
+.close_btn {
+	cursor: pointer;
+	position: fixed;
+	top: 0;
+	right: 0;
+	border: 10px solid theme-color('warning');
+	background: #fff;
+	z-index: 10;
+
+	svg {
+		font-size: 30px;
+	}
+}

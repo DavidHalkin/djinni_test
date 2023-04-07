@@ -1,0 +1,13 @@
+.custom_dropdown {
+	&.show {
+		.btn {
+			svg {
+				transform: scale(-1);
+			}
+		}
+
+		.dropdown-menu {
+			display: block;
+		}
+	}
+}

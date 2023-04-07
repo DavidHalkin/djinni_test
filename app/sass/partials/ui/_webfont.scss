@@ -1,0 +1,28 @@
+$font-path: "../fonts/";
+
+@font-face {
+	font-family: 'Commissioner';
+	src: url('#{$font-path}Commissioner-Bold.woff2') format('woff2'),
+	url('#{$font-path}Commissioner-Bold.woff') format('woff');
+	font-weight: bold;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Commissioner';
+	src: url('#{$font-path}Commissioner-Medium.woff2') format('woff2'),
+	url('#{$font-path}Commissioner-Medium.woff') format('woff');
+	font-weight: 500;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Commissioner';
+	src: url('#{$font-path}Commissioner-Regular.woff2') format('woff2'),
+	url('#{$font-path}Commissioner-Regular.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
+}
