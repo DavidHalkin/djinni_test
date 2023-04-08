@@ -106,6 +106,12 @@ document.addEventListener('DOMContentLoaded', () => {
 		});
 	}
 
+
+
+
+
+	// add show more btn
+
 	const cardContainer = document.querySelector('#infinity_section');
 	const cards = cardContainer.querySelectorAll('.column');
 
@@ -121,23 +127,23 @@ document.addEventListener('DOMContentLoaded', () => {
 				// paragraph.classList.add('bg-warning');
 
 				if (more) {
-					more.innerHTML = `<a href="#" class="text-decoration-none text-dark btn_more_js">${txtMore}</a>`;
+					more.innerHTML = `<a href="#" class="text-decoration-none text-dark">${txtMore}</a>`;
 				} else {
 					const newMore = document.createElement('div');
 					newMore.classList.add('more_btn');
 					if (paragraph.classList.contains('opened')) {
-						newMore.innerHTML = `<a href="#" class="text-decoration-none text-dark btn_more_js">${txtLess}</a>`;
+						newMore.innerHTML = `<a href="#" class="text-decoration-none text-dark">${txtLess}</a>`;
 					} else {
-						newMore.innerHTML = `<a href="#" class="text-decoration-none text-dark btn_more_js">${txtMore}</a>`;
+						newMore.innerHTML = `<a href="#" class="text-decoration-none text-dark">${txtMore}</a>`;
 					}
 					item.querySelector('.card-body').appendChild(newMore);
 					newMore.addEventListener('click', (e) => {
 						e.preventDefault();
 						paragraph.classList.toggle('opened');
 						if (paragraph.classList.contains('opened')) {
-							newMore.innerHTML = `<a href="#" class="text-decoration-none text-dark btn_more_js">${txtLess}</a>`;
+							newMore.innerHTML = `<a href="#" class="text-decoration-none text-dark">${txtLess}</a>`;
 						} else {
-							newMore.innerHTML = `<a href="#" class="text-decoration-none text-dark btn_more_js">${txtMore}</a>`;
+							newMore.innerHTML = `<a href="#" class="text-decoration-none text-dark">${txtMore}</a>`;
 						}
 					});
 				}
@@ -158,8 +164,12 @@ document.addEventListener('DOMContentLoaded', () => {
 	window.addEventListener('orientationchange', addMoreBtn);
 
 
-	const switchers = document.querySelectorAll('.btn_toggler input[type=radio]');
 
+
+	// switch dark mode 
+
+
+	const switchers = document.querySelectorAll('.btn_toggler input[type=radio]');
 
 	function setDarkMode() {
 		document.querySelectorAll('.text-light').forEach((styles) => {
@@ -195,13 +205,88 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-	//cards render
-	async function logJSONData() {
-		const response = await fetch('https://picsum.photos/v2/list?page=1&limit=9');
-		const jsonData = await response.json();
-		jsonData.forEach(cardOne => {
-			console.log(cardOne);
+
+
+
+
+
+	// load more cards
+	let pageCouner = 1;
+	let isLoading = false;
+
+	const getResourse = async (url) => {
+		let res = await fetch(url);
+		if (!res.ok) {
+			throw new Error(`Could not fetch ${url}, status: ${res.status}`);
+		}
+		return await res.json();
+	};
+
+
+	function showMoreCards(wrapper) {
+
+		function toDo() {
+			getResourse(`https://picsum.photos/v2/list?page=${pageCouner}&limit=9`)
+				.then(res => cardCreate(res))
+				.catch(error => console.log(error));
+		}
+
+		window.addEventListener('load', () => {
+			toDo();
+			pageCouner++;
+			console.log(pageCouner);
+		}, {
+			once: true
 		});
+
+		window.addEventListener('scroll', () => {
+			const documentRect = document.documentElement.getBoundingClientRect();
+
+			if (documentRect.bottom < document.documentElement.clientHeight + 150 && !isLoading) {
+				isLoading = true;
+				toDo();
+				pageCouner++;
+				console.log(pageCouner);
+			}
+
+		});
+
+		function cardCreate(response) {
+			isLoading = false;
+			response.forEach(({
+				url,
+				author,
+				download_url
+			}) => {
+				let dataCard = document.createElement('div');
+				dataCard.classList.add('col-12', 'col-sm-6', 'column');
+				dataCard.innerHTML = `
+					<div class="card">
+						<div class="img_holder">
+							<img src="${download_url}" class="card-img-top" alt="...">
+						</div>
+						<div class="card-body">
+							<h5 class="card-title text-dark font-weight-bold">${author}</h5>
+							<p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat fugaLorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat fuga</p>
+						</div>
+						<div class="card-footer px-3 bg-transparent">
+							<div class="row mx-n2">
+								<div class="col-12 col-md-auto px-2">
+									<a href="${url}" target="_blank" class="btn btn-warning font-weight-bold px-3">Save to collection</a>
+								</div>
+								<div class="col-12 col-md-auto px-2">
+									<button class="btn btn-outline-light text-dark font-weight-bold  px-3">Share</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				`;
+				document.querySelector(wrapper).appendChild(dataCard);
+
+			});
+		}
+
 	}
-	logJSONData();
+
+	showMoreCards('#infinity_section');
 });
