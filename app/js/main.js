@@ -121,15 +121,21 @@ document.addEventListener('DOMContentLoaded', () => {
 	// add show more btn
 
 	const cardContainer = document.querySelector('#infinity_section');
-	const cards = cardContainer.querySelectorAll('.column');
+	// const cards = cardContainer.querySelectorAll('.column');
 
 	const txtMore = 'Show more...';
 	const txtLess = 'Show less...';
 
+	document.addEventListener('testCard', addMoreBtn);
+
 	function addMoreBtn() {
+		const cards = cardContainer.querySelectorAll('.column');
 		cards.forEach(item => {
 			const paragraph = item.querySelector('p');
 			const more = item.querySelector('.more_btn');
+
+
+			// paragraph.classList.add('bg-warning');
 
 			if (paragraph.scrollHeight > paragraph.clientHeight) {
 				// paragraph.classList.add('bg-warning');
@@ -189,7 +195,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 	// load more cards
-	let pageCouner = 1;
+	let pageCouner = 0;
 	let isLoading = false;
 
 	const getResourse = async (url) => {
@@ -207,12 +213,14 @@ document.addEventListener('DOMContentLoaded', () => {
 			getResourse(`https://picsum.photos/v2/list?page=${pageCouner}&limit=9`)
 				.then(res => cardCreate(res))
 				.catch(error => console.log(error));
+
 		}
 
 		window.addEventListener('load', () => {
 			toDo();
 			pageCouner++;
-			console.log(pageCouner);
+			console.log(`Page ${pageCouner}`);
+
 		}, {
 			once: true
 		});
@@ -224,7 +232,7 @@ document.addEventListener('DOMContentLoaded', () => {
 				isLoading = true;
 				toDo();
 				pageCouner++;
-				console.log(pageCouner);
+				console.log(`Page ${pageCouner}`);
 			}
 
 		});
@@ -260,7 +268,8 @@ document.addEventListener('DOMContentLoaded', () => {
 					</div>
 				`;
 				document.querySelector(wrapper).appendChild(dataCard);
-
+				const testCard = new CustomEvent('testCard', {});
+				document.dispatchEvent(testCard);
 			});
 		}
 

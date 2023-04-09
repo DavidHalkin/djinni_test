@@ -102,7 +102,7 @@ svg[class^="icon-"] path, svg[class*=" icon-"] path { fill: currentColor !import
 
 .sidebar { --size: 273px; max-width: var(--size); -webkit-box-flex: 0; -ms-flex: 0 0 var(--size); flex: 0 0 var(--size); position: -webkit-sticky; position: sticky; top: 80px; left: 0; background: #fff; z-index: 10; margin-top: 10px; }
 
-@media (max-width: 991.98px) { .sidebar { --size: 100%; top: 73px; margin-top: 30px; border-bottom: 1px solid #ED7135; } }
+@media (max-width: 991.98px) { .sidebar { --size: 100%; top: 72px; margin-top: 30px; border-bottom: 1px solid #ED7135; } }
 
 .nav_list { overflow: auto; }
 
