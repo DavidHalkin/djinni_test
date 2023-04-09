@@ -1,4 +1,4 @@
-.custom_checkbox {
+.custom_radio {
 	display: inline-flex;
 
 	[type="radio"] {
@@ -12,8 +12,8 @@
 		&:checked {
 			~span {
 				color: #fff !important;
-				background: theme-color('dark') !important;
-				border-color: theme-color('dark') !important;
+				background: theme-color('dark');
+				border-color: theme-color('dark');
 			}
 		}
 	}
@@ -31,10 +31,10 @@
 		}
 	}
 
-	.custom_checkbox {
+	.custom_radio {
 		margin-bottom: 0;
 
-		+.custom_checkbox {
+		+.custom_radio {
 			.btn {
 				border-left-width: 0;
 			}

@@ -1,0 +1,76 @@
+// @media (prefers-color-scheme: dark) {
+// 	body {
+// 		background: red;
+// 	}
+// }
+
+.dark-mode {
+	--black: #000;
+	--gray: #777;
+
+	body {
+		color: theme-color('dark');
+	}
+
+	body,
+	.header,
+	.bg-gray-100,
+	.sidebar,
+	.header_content,
+	.card,
+	.dropdown-menu {
+		background: var(--black);
+	}
+
+	.card,
+	.dropdown-menu,
+	.card-footer {
+		border-color: var(--gray);
+	}
+
+	.card {
+		.btn-outline-light {
+			@include button-variant(transparent, theme-color('dark'));
+			color: $white !important;
+		}
+	}
+
+	.custom_radio {
+		[type="radio"] {
+			&:checked {
+				~span {
+					@include button-variant(theme-color('warning'), theme-color('warning'));
+				}
+			}
+
+			&:not(:checked) {
+				~span {
+					@include button-variant(transparent, theme-color('dark'));
+				}
+			}
+		}
+	}
+
+
+
+	.dropdown-menu {
+		a {
+			color: theme-color('dark');
+
+			&:focus,
+			&:active {
+				background: none;
+			}
+		}
+	}
+
+	.dropdown-item {
+		&:hover {
+			color: $white;
+		}
+
+		&.active {
+			background: theme-color('warning');
+		}
+	}
+}

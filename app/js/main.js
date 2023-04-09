@@ -72,6 +72,14 @@ document.addEventListener('DOMContentLoaded', () => {
 				dropMenu.addEventListener('click', e => {
 					if (e.target.closest('a')) {
 						button.querySelector('span').innerHTML = e.target.closest('a').innerHTML;
+						const allLinks = dropMenu.querySelectorAll('a');
+						allLinks.forEach(link => {
+							if (link === e.target.closest('a')) {
+								link.classList.add('active');
+							} else {
+								link.classList.remove('active');
+							}
+						});
 					}
 				});
 			}
@@ -169,42 +177,12 @@ document.addEventListener('DOMContentLoaded', () => {
 	// switch dark mode 
 
 
-	const switchers = document.querySelectorAll('.btn_toggler input[type=radio]');
-
-	function setDarkMode() {
-		document.querySelectorAll('.text-light').forEach((styles) => {
-			styles.classList.replace('text-light', 'text-dark');
-		});
+	if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+		document.documentElement.classList.toggle('dark-mode');
 	}
-
-	function setLightMode() {
-		document.querySelectorAll('.text-dark').forEach((styles) => {
-			styles.classList.replace('text-dark', 'text-light');
-		});
-	}
-	if (document.body.closest('.dark-mode')) {
-		switchers[1].checked = true;
-		setLightMode();
-	} else {
-		switchers[0].checked = true;
-		setDarkMode();
-	}
-
-	switchers.forEach(element => {
-		element.addEventListener('click', (e) => {
-
-			if (e.target.getAttribute('id') == 'day') {
-				document.body.classList.remove('dark-mode');
-				setDarkMode();
-			} else {
-				document.body.classList.add('dark-mode');
-				setLightMode();
-			}
-		});
+	window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+		document.documentElement.classList.toggle('dark-mode');
 	});
-
-
-
 
 
 

@@ -8,6 +8,20 @@
 
 		.dropdown-menu {
 			display: block;
+
+
 		}
+	}
+}
+
+.dropdown-item {
+	&:hover {
+		color: theme-color('warning');
+		background: none;
+	}
+
+	&.active {
+		background: theme-color('warning');
+		color: $white !important;
 	}
 }
